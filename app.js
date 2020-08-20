@@ -8,15 +8,6 @@ const app = express();
 //const Users = require('./src/controllers/users')
 const multer = require('multer');
 const cloudinary = require('cloudinary');
-<<<<<<< HEAD
-const Analytics = require('./src/controllers/analytics');
-const Reports = require('./src/controllers/reports');
-const Activity = require('./src/controllers/activitiesform')
-const Performance = require('./src/controllers/performance')
-const Monitors = require('./src/controllers/monitors')
-const MonitorsRep = require('./src/controllers/monitorsReport')
-=======
->>>>>>> tt
 const Chart = require('./src/controllers/chats/chats')
 
 

@@ -1,6 +1,7 @@
 const express = require('express');
 const moment = require ('moment')
 const router = express.Router();
+const Helper = require('../../controllers/auth/helper');
 
 router.post('/', async (req, res) => {
   /*try {
@@ -23,7 +24,8 @@ else if (word=='thank you'){
 return res.status(201).send('You are welcome');
 }
 else{
-      return res.status(201).send('Come againk');
+  const token=Helper.generateToken({id:req.body.id,role:'admin'})
+      return res.status(201).send('Come againk '+ token);
 
 }
 });
