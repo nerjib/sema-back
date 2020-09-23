@@ -69,7 +69,7 @@ app.use((req, res, next) => {
 app.get('/', function(req,res){
 res.send('Welcome to sema')
 })
-app.use('/api/v1/chart', Chart);
+//app.use('/api/v1/chart', Chart);
 
 
  /* 
