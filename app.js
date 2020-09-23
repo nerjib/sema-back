@@ -67,7 +67,7 @@ app.use((req, res, next) => {
   });
   
 app.get('/', function(req,res){
-res.send('Welcome to talla')
+res.send('Welcome to sema')
 })
 app.use('/api/v1/chart', Chart);
 
