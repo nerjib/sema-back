@@ -22,7 +22,7 @@ router.get('/', async (req, res) => {
 router.post('/', async (req, res) => {
   const createUser = `INSERT INTO
   users (last_name,first_name,pword,phone_no,role,lga,active,time,address)
-  VALUES ($1, $2,$3,$4,$5,$6,$7,$8) RETURNING *`;
+  VALUES ($1, $2,$3,$4,$5,$6,$7,$8,$9) RETURNING *`;
 
 const values = [
 req.body.lname,
