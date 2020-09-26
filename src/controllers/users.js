@@ -21,7 +21,7 @@ router.get('/', async (req, res) => {
 //insert users
 router.post('/', async (req, res) => {
   const createUser = `INSERT INTO
-  users (last_name,first_name,pword,phone,role,lga,active,time)
+  users (last_name,first_name,pword,phone_no,role,lga,active,time,address)
   VALUES ($1, $2,$3,$4,$5,$6,$7,$8) RETURNING *`;
 
 const values = [
@@ -32,7 +32,8 @@ req.body.phone,
 'user',
 req.body.lga,
 'active',
-moment(new Date())
+moment(new Date()),
+req.body.address
 ];
 try {
 const { rows } = await db.query(createUser, values);
