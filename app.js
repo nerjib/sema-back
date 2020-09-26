@@ -9,7 +9,7 @@ const app = express();
 const multer = require('multer');
 const cloudinary = require('cloudinary');
 const Chart = require('./src/controllers/chats/chats')
-
+const Users = require('./src/controllers/users')
 
 
 app.use(cors())
@@ -69,7 +69,7 @@ app.use((req, res, next) => {
 app.get('/', function(req,res){
 res.send('Welcome to sema')
 })
-//app.use('/api/v1/chart', Chart);
+app.use('/api/v1/users', Users);
 
 
  /* 
