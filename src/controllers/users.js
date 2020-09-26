@@ -30,6 +30,20 @@ router.get('/:id', async (req, res) => {
     return res.status(400).send(`${error} jsh`);
   }
 });
+router.get('/login', async (req, res) => {
+  const getAllQ = `SELECT * FROM users where phone_no=$1 and pword=$2`;
+  try {
+    // const { rows } = qr.query(getAllQ);
+    const { rows } = await db.query(getAllQ,[req.body.phone,req.body.pword]);
+    return res.status(201).send(rows);
+  } catch (error) {
+    if (error.routine === '_bt_check_unique') {
+      return res.status(400).send({ message: 'User with that EMAIL already exist' });
+    }
+    return res.status(400).send(`${error} jsh`);
+  }
+});
+
 
 //insert users
 router.post('/', async (req, res) => {
