@@ -17,7 +17,7 @@ router.get('/', async (req, res) => {
     return res.status(400).send(`${error} jsh`);
   }
 });
-router.get('/:id', async (req, res) => {
+router.get('/userid/:id', async (req, res) => {
   const getAllQ = 'SELECT * FROM users where id=$1';
   try {
     // const { rows } = qr.query(getAllQ);
@@ -30,7 +30,7 @@ router.get('/:id', async (req, res) => {
     return res.status(400).send(`${error} jsh`);
   }
 });
-router.get('/login', async (req, res) => {
+router.post('/login', async (req, res) => {
   const getAllQ = `SELECT * FROM users where phone_no=$1 and pword=$2`;
   try {
     // const { rows } = qr.query(getAllQ);
