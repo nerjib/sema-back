@@ -41,7 +41,7 @@ router.get('/', async (req, res) => {
   const flood = await getFLood()
 
      res.status(201).json({
-         fire,
+         fire: fire[0].count,
          flood
      })
 
