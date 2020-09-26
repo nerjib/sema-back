@@ -32,7 +32,7 @@ req.body.phone,
 'user',
 req.body.lga,
 'active',
-moment(new Date()),
+moment(new Date())
 ];
 try {
 const { rows } = await db.query(createUser, values);
