@@ -10,6 +10,8 @@ const multer = require('multer');
 const cloudinary = require('cloudinary');
 const Chart = require('./src/controllers/chats/chats')
 const Users = require('./src/controllers/users')
+const Reports = require('./src/controllers/reports')
+
 
 
 app.use(cors())
@@ -70,6 +72,8 @@ app.get('/', function(req,res){
 res.send('Welcome to sema')
 })
 app.use('/api/v1/users', Users);
+app.use('/api/v1/reports', Reports);
+
 
 
  /* 
