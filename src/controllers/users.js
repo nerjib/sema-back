@@ -27,8 +27,8 @@ router.post('/', async (req, res) => {
 const values = [
 req.body.lname,
 req.body.fname,
+req.body.pword,
 req.body.phone,
-req.body.email,
 req.body.role,
 req.body.lga,
 'active',
