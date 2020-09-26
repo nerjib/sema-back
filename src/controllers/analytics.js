@@ -6,7 +6,7 @@ const db = require('../dbs/index');
 
 
 const getFire = async () => {
-    const getfire = `select count (*) from from reports where incident=$1`
+    const getfire = `select count (*) from  reports where incidence=$1`
     try {
       // const { rows } = qr.query(getAllQ);
       const { rows } = await db.query(getfire,['Fire']);
@@ -21,7 +21,7 @@ const getFire = async () => {
     }
 }
 const getFLood = async () => {
-    const getflood = `select count (*) from from reports where incident=$1`
+    const getflood = `select count (*) from  reports where incidence=$1`
     try {
       // const { rows } = qr.query(getAllQ);
       const { rows } = await db.query(getflood,['Flood']);
