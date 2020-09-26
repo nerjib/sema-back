@@ -42,7 +42,7 @@ router.get('/', async (req, res) => {
 
      res.status(201).json({
          fire: fire[0].count,
-         flood
+         flood: flood[0].count
      })
 
 });
