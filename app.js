@@ -79,7 +79,6 @@ app.use('/api/v1/analytics', Analytics);
 
 
 app.post('/api/v1/upload', upload.single('image'), (req, res) => {
-  return   res.send({imgurl:'result.secure_url'})
 
   // console.log(req.body)
     cloudinary.uploader.upload(req.file.path, function (result) {
