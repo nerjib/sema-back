@@ -82,7 +82,7 @@ app.post('/api/v1/upload', upload.single('image'), (req, res) => {
   // console.log(req.body)
     cloudinary.uploader.upload(req.file.path, function (result) {
      //  console.log(result.secure_url)
-       res.send({imgurl:result.secure_url})
+    return   res.send({imgurl:result.secure_url})
    //   Activity.createReport(req, res, result.secure_url);
      });
    }); 
