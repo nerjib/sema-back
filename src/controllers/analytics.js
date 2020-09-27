@@ -39,7 +39,6 @@ const getFLood = async () => {
 router.get('/', async (req, res) => {
   const fire = await getFire()
   const flood = await getFLood()
-
      res.status(201).json({
          fire: fire[0].count,
          flood: flood[0].count
