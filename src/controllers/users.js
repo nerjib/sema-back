@@ -73,7 +73,7 @@ const data = {
     message: 'User added successfully​',
     name: rows[0].first_name,
     email: rows[0].email,
-    phone: rows[0].phone,
+    phone: rows[0].phone_no,
     id: rows[0].id
   },
 };
