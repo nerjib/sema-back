@@ -30,6 +30,7 @@ router.get('/userid/:id', async (req, res) => {
     return res.status(400).send(`${error} jsh`);
   }
 });
+
 router.post('/login', async (req, res) => {
   const getAllQ = `SELECT * FROM users where phone_no=$1 and pword=$2`;
   try {
@@ -70,9 +71,10 @@ const data = {
   status: 'success',
   data: {
     message: 'User added successfully​',
-    Name: rows[0].first_name,
-    Email: rows[0].email,
+    name: rows[0].first_name,
+    email: rows[0].email,
     phone: rows[0].phone,
+    id: rows[0].id
   },
 };
 return res.status(201).send(data);
