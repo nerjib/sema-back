@@ -27,9 +27,33 @@ router.get('/reportid/:id', async (req, res) => {
   }
 });
 
+//get open reports
+router.get('/openreport/:id', async (req, res) => {
+  const getAllQ = 'SELECT * FROM reports  where aid=$1 and done=$2';
+  try {
+    // const { rows } = qr.query(getAllQ);
+    const { rows } = await db.query(getAllQ,[req.params.id,0]);
+    return res.status(201).send(rows);
+  } catch (error) {
+  
+    return res.status(400).send(`${error} jsh`);
+  }
+});
 
+//get closed reports
+router.get('/closedreport/:id', async (req, res) => {
+  const getAllQ = 'SELECT * FROM reports  where aid=$1 and done=$2';
+  try {
+    // const { rows } = qr.query(getAllQ);
+    const { rows } = await db.query(getAllQ,[req.params.id,1]);
+    return res.status(201).send(rows);
+  } catch (error) {
+  
+    return res.status(400).send(`${error} jsh`);
+  }
+});
 
-//insert users
+//insert reports
 router.post('/', async (req, res) => {
   const createReport = `INSERT INTO
   reports (incidence,time,uid,img,contact,gps,address,rtime,comment)
