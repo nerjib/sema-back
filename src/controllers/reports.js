@@ -113,5 +113,38 @@ return res.status(201).send(data);
 return res.status(400).send(error);
 }
 });
+
+router.post('/feedback', async (req, res) => {
+  const createReportFeedback = `INSERT INTO
+  feedbackreports (receiverid,senderid,rid,message,gps,imgurl1,imgurl2,time)
+  VALUES ($1, $2,$3,$4,$5,$6,$7,$8) RETURNING *`;
+
+const values = [
+  req.body.receiverid,
+req.body.senderid,
+req.body.rid,
+req.body.msg,
+req.body.gps,
+req.body.imgurl1,
+req.body.imgurl2,
+moment(new Date())
+];
+try {
+const { rows } = await db.query(createReportFeedback, values);
+// console.log(rows);
+const data = {
+  status: 'success',
+  data: {
+    message: 'Reports Sent successfully​',
+    Name: rows[0].incidence,
+    Email: rows[0].comment,
+  },
+};
+return res.status(201).send(data);
+} catch (error) {
+return res.status(400).send(error);
+}
+});
+
 module.exports = router;
 
