@@ -55,10 +55,23 @@ router.get('/closedreport/:id', async (req, res) => {
 
 //get all feedback of open activities
 router.get('/feedback/:id', async (req, res) => {
-  const getAllQ = 'SELECT * FROM feedbackreports  where senderid=$1 or receiverid=$2 order by id desc';
+  const getAllQ = 'SELECT * FROM feedbackreports  where senderid=$1 or receiverid=$2 order by id asc';
   try {
     // const { rows } = qr.query(getAllQ);
     const { rows } = await db.query(getAllQ,[req.params.id, req.params.id]);
+    return res.status(201).send(rows);
+  } catch (error) {
+  
+    return res.status(400).send(`${error} jsh`);
+  }
+});
+
+//get all feedback of open activities
+router.get('/reportfeedback/:id', async (req, res) => {
+  const getAllQ = 'SELECT * FROM feedbackreports  where rid=$1  order by id asc';
+  try {
+    // const { rows } = qr.query(getAllQ);
+    const { rows } = await db.query(getAllQ,[req.params.id]);
     return res.status(201).send(rows);
   } catch (error) {
   
