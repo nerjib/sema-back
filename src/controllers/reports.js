@@ -148,7 +148,7 @@ return res.status(400).send(error);
 
 
 router.update('/aid', async (req, res) => {
-  const updateaid = `UPDATE reports set aid=$1 where id=$2 RETURNING *`;
+  const updateaid = `UPDATE reports set aid=$1, aidtime=$2 where id=$3`;
 
 const values = [
   req.body.aid,
