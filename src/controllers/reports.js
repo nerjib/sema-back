@@ -146,5 +146,31 @@ return res.status(400).send(error);
 }
 });
 
+
+router.update('/aid', async (req, res) => {
+  const updateaid = `UPDATE reports set aid=$1 where id=$2 RETURNING *`;
+
+const values = [
+  req.body.aid,
+  moment(new Date()),
+req.body.rid
+];
+try {
+const { rows } = await db.query(updateaid, values);
+// console.log(rows);
+const data = {
+  status: 'success',
+  data: {
+    message: 'Reports Sent successfully​',
+    Name: rows[0].incidence,
+    Email: rows[0].comment,
+  },
+};
+return res.status(201).send(data);
+} catch (error) {
+return res.status(400).send(error);
+}
+});
+
 module.exports = router;
 
