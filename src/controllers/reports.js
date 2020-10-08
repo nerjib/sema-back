@@ -83,8 +83,8 @@ router.get('/reportfeedback/:id', async (req, res) => {
 //insert reports
 router.post('/', async (req, res) => {
   const createReport = `INSERT INTO
-  reports (incidence,time,uid,img,contact,gps,address,rtime,comment)
-  VALUES ($1, $2,$3,$4,$5,$6,$7,$8,$9) RETURNING *`;
+  reports (incidence,time,uid,img,contact,gps,address,rtime,comment,done)
+  VALUES ($1, $2,$3,$4,$5,$6,$7,$8,$9,$10) RETURNING *`;
 
 const values = [
 req.body.incidence,
@@ -95,7 +95,8 @@ req.body.contact,
 req.body.gps,
 req.body.address,
 req.body.rtime,
-req.body.comment
+req.body.comment,
+0
 ];
 try {
 const { rows } = await db.query(createReport, values);
