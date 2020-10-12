@@ -27,6 +27,18 @@ router.get('/reportid/:id', async (req, res) => {
   }
 });
 
+router.get('/reportsbylga/:id', async (req, res) => {
+  const getAllQ = 'SELECT * FROM reports left join users on reports.uid=users.id where reports.lga=$1';
+  try {
+    // const { rows } = qr.query(getAllQ);
+    const { rows } = await db.query(getAllQ,[req.params.id]);
+    return res.status(201).send(rows);
+  } catch (error) {
+  
+    return res.status(400).send(`${error} jsh`);
+  }
+});
+
 //get open reports
 router.get('/openreport/:id', async (req, res) => {
   const getAllQ = 'SELECT * FROM reports  where aid=$1 and done=$2';
