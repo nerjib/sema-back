@@ -95,10 +95,10 @@ router.get('/reportfeedback/:id', async (req, res) => {
 
 //get all draft reports
 router.get('/getdraft', async (req, res) => {
-  const getAllQ = 'SELECT * FROM draftreports left join users on draftreports.sid=users.id where draftreports.id=$1';
+  const getAllQ = 'SELECT * FROM draftreports left join users on draftreports.sid=users.id';
   try {
     // const { rows } = qr.query(getAllQ);
-    const { rows } = await db.query(getAllQ,[req.params.id]);
+    const { rows } = await db.query(getAllQ);
     return res.status(201).send(rows);
   } catch (error) {
   
