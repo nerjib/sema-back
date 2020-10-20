@@ -78,6 +78,8 @@ router.get('/feedback/:id', async (req, res) => {
   }
 });
 
+
+
 //get all feedback of open activities
 router.get('/reportfeedback/:id', async (req, res) => {
   const getAllQ = 'SELECT * FROM feedbackreports  where rid=$1  order by id asc';
@@ -91,6 +93,18 @@ router.get('/reportfeedback/:id', async (req, res) => {
   }
 });
 
+//get all draft reports
+router.get('/getdraft', async (req, res) => {
+  const getAllQ = 'SELECT * FROM draftreports left join users on reports.sid=users.id where reports.id=$1';
+  try {
+    // const { rows } = qr.query(getAllQ);
+    const { rows } = await db.query(getAllQ,[req.params.id]);
+    return res.status(201).send(rows);
+  } catch (error) {
+  
+    return res.status(400).send(`${error} jsh`);
+  }
+});
 
 //insert reports
 router.post('/', async (req, res) => {
@@ -159,6 +173,44 @@ return res.status(400).send(error);
 }
 });
 
+//post draft reports
+router.post('/draftreports', async (req, res) => {
+  const createDraftReport = `INSERT INTO
+  draftreports (date,source,state,lga,ward,block,event,place,cause,descrcause,imgurl,sid,vid,oid,gps,category)
+  VALUES ($1, $2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16) RETURNING *`;
+
+const values = [
+  moment(new Date()),
+  req.body.source,
+  req.body.state,
+  req.body.lga,
+  req.body.ward,
+  req.body.block,
+  req.body.event,
+  req.body.place,
+  req.body.cause,
+  req.body.descrcause,
+  req.body.imgurl,
+  req.body.sid,
+  req.body.vid,
+  req.body.oid,
+  req.body.gps,
+  req.body.category
+];
+try {
+const { rows } = await db.query(createDraftReport, values);
+// console.log(rows);
+const data = {
+  status: 'success',
+  data: {
+    message: 'Reports Sent successfully​'
+    },
+};
+return res.status(201).send(data);
+} catch (error) {
+return res.status(400).send(error);
+}
+});
 
 router.put('/aid', async (req, res) => {
   const updateaid = `UPDATE reports set aid=$1, aidtime=$2 where id=$3 RETURNING *`;
