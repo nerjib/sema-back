@@ -192,8 +192,8 @@ const values = [
   req.body.descrcause,
   req.body.imgurl,
   req.body.sid,
-  req.body.vid,
-  req.body.oid,
+  0,
+  0,
   req.body.gps,
   'draft'
 ];
