@@ -118,6 +118,19 @@ router.get('/getuserdraft/:id', async (req, res) => {
   }
 });
 
+router.get('/followup', async (req, res) => {
+  const getAllQ = 'SELECT * FROM followup left join draftreports on draftreports.id=followup.rid';
+  try {
+    // const { rows } = qr.query(getAllQ);
+    const { rows } = await db.query(getAllQ);
+    return res.status(201).send(rows);
+  } catch (error) {
+  
+    return res.status(400).send(`${error} jsh`);
+  }
+});
+
+
 
 //insert reports
 router.post('/', async (req, res) => {
