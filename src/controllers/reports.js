@@ -106,6 +106,19 @@ router.get('/getdraft', async (req, res) => {
   }
 });
 
+router.get('/getuserdraft/:id', async (req, res) => {
+  const getAllQ = 'SELECT * FROM draftreports  where sid=$1 or oid=$2  order by id asc';
+  try {
+    // const { rows } = qr.query(getAllQ);
+    const { rows } = await db.query(getAllQ,[req.params.id, req.params.id]);
+    return res.status(201).send(rows);
+  } catch (error) {
+  
+    return res.status(400).send(`${error} jsh`);
+  }
+});
+
+
 //insert reports
 router.post('/', async (req, res) => {
   const createReport = `INSERT INTO
