@@ -195,7 +195,7 @@ const values = [
   req.body.vid,
   req.body.oid,
   req.body.gps,
-  req.body.category
+  'draft'
 ];
 try {
 const { rows } = await db.query(createDraftReport, values);
