@@ -305,11 +305,7 @@ router.post('/followup', async (req, res) => {
     $81,$82,$83,$84,$85,$86,$87,$88,$89,$90,$91,$92,$93,$94,$95,$96,$97,$98) RETURNING *`;
 */
 const updateDraft = `INSERT INTO
-  followup (time, rid,    uid,    killed,    killedmen,  
-      killedwomen,    killedchildren,    killedelder,    missing,    missingmen, 
-       missingwomen,        missingchildren,    missingelder,    injured,    injuredmen,  
-         injuredwomen,      injuredchildren,    injuredelder,    magnitude,    latitude 
-                     
+  followup (time, rid,    uid
     )
   VALUES ($1, $2,$3)RETURNING *`;
   const values = [
