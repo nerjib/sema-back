@@ -308,15 +308,24 @@ const updateDraft = `INSERT INTO
   followup (time, rid,    uid,     killed,    killedmen,  
     killedwomen,    killedchildren,    killedelder,    missing,    missingmen,
     missingwomen,  missingchildren,    missingelder,    injured,    injuredmen,  
-    injuredwomen,      injuredchildren,    injuredelder,    magnitude,    latitude 
+    injuredwomen,      injuredchildren,    injuredelder,    magnitude,    latitude,
+    longitude,    glidenumber,    affected,    affectedfamilies,    affectedmen, 
+    affectedwomen,     affectedchildren,    affectedelder,    victim,    victimfamilies, 
+    victimsmen,    victimswomen,    victimschildren,    victimselder,    transferred, 
+    transferredfamilies,    transferredmen,    transferredwomen,    transferredchildren,    transferredelder
       )
-  VALUES ($1, $2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20)RETURNING *`;
+  VALUES ($1, $2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,
+    $21,$22,$23,$24,$25,$26,$27,$28,$29,$30,$31,$32,$33,$34,$35,$36,$37,$38,$39,$40)RETURNING *`;
   const values = [
     moment(new Date()), req.body.rid, req.body.uid, req.body.killed,   req.body.killedmen,
     req.body.killedwomen,    req.body.killedchildren,    req.body.killedelder,    req.body.missing, req.body.missingmen,
     req.body.missingwomen,   req.body.missingchildren,    req.body.missingelder,    req.body.injured,    req.body.injuredmen,
-   req.body.injuredwomen,    req.body.injuredchildren,    req.body.injuredelder,    req.body.magnitude,req.body.latitude
-  ];
+   req.body.injuredwomen,    req.body.injuredchildren,    req.body.injuredelder,    req.body.magnitude,req.body.latitude,
+   req.body.longitude,   req.body.glidenumber,    req.body.affected, req.body.affectedfamilies,    req.body.affectedmen,  
+   req.body.affectedwomen,   req.body.affectedchildren, req.body.affectedelder,    req.body.victim,    req.body.victimfamilies, 
+    req.body.victimsmen,   req.body.victimswomen, req.body.victimschildren,    req.body.victimselder,    req.body.transferred, 
+    req.body.transferredfamilies,   req.body.transferredmen,    req.body.transferredwomen,    req.body.transferredchildren,    req.body.transferredelder
+   ];
 /*const values = [
 moment(new Date()), req.body.rid, req.body.uid,    req.body.killed,    req.body.killedmen,
     req.body.killedwomen,    req.body.killedchildren,    req.body.killedelder,    req.body.missing, req.body.missingmen, 
