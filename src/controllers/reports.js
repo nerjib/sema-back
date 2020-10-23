@@ -316,11 +316,16 @@ const updateDraft = `INSERT INTO
     evacuated,    evacuatedfamilies,    evacuatedmen,    evacuatedwomen,    evacuatedchildren, 
     evacuatedelder,    housesdestroyed,    housesdestroyedbrick,    housesdestroyedwood,    housesdamaged, 
        housesdamagedbrick,    housesdamagedwood,    schoolsdestroyed,    schoolsdestroyedclass,    schoolsdestroyedstudents,
- schoolsdamaged,    schoolsdamagedclass,    schoolsdamagedstudents,    hospitaldestroyed,    hospitaldamaged
+ schoolsdamaged,    schoolsdamagedclass,    schoolsdamagedstudents,    hospitaldestroyed,    hospitaldamaged,
+ healthcentersdestroyed,    healthcentersdamaged,    healthpostsdestroyed,    healthpostsdamaged,    religiousbuildingsdestroyed,
+ religiousbuildingsdamaged,    publicbuildingdestroyed,    publicbuildingdamage,    costdamageslocal,    costdamagesdolar,
+hectarescropsdamaged,    hectarescropsdestroyed,    heardsofcattle,    damagedroads,    destroyed, 
+affectedroads,    bridgesdestroyed,    bridgesdamaged,    watersourcesaffected,    wellsdestroyed
        )
   VALUES ($1, $2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,
     $21,$22,$23,$24,$25,$26,$27,$28,$29,$30,$31,$32,$33,$34,$35,$36,$37,$38,$39,$40,
-    $41,$42,$43,$44,$45,$46,$47,$48,$49,$50,$51,$52,$53,$54,$55,$56,$57,$58,$59,$60)RETURNING *`;
+    $41,$42,$43,$44,$45,$46,$47,$48,$49,$50,$51,$52,$53,$54,$55,$56,$57,$58,$59,$60,
+    $61,$62,$63,$64,$65,$66,$67,$68,$69,$70,$71,$72,$73,$74,$75,$76,$77,$78,$79,$80)RETURNING *`;
   const values = [
     moment(new Date()), req.body.rid, req.body.uid, req.body.killed,   req.body.killedmen,
     req.body.killedwomen,    req.body.killedchildren,    req.body.killedelder,    req.body.missing, req.body.missingmen,
@@ -333,8 +338,12 @@ const updateDraft = `INSERT INTO
     req.body.evacuated,    req.body.evacuatedfamilies,    req.body.evacuatedmen,    req.body.evacuatedwomen, req.body.evacuatedchildren, 
     req.body.evacuatedelder,    req.body.housesdestroyed,    req.body.housesdestroyedbrick, req.body.housesdestroyedwood,        req.body.housesdamaged,   
     req.body.housesdamagedbrick,    req.body.housesdamagedwood, req.body.schoolsdestroyed,    req.body.schoolsdestroyedclass,    req.body.schoolsdestroyedstudents,
-  req.body.schoolsdamaged,    req.body.schoolsdamagedclass,    req.body.schoolsdamagedstudents, req.body.hospitaldestroyed,    req.body.hospitaldamaged
-   ];
+  req.body.schoolsdamaged,    req.body.schoolsdamagedclass,    req.body.schoolsdamagedstudents, req.body.hospitaldestroyed,    req.body.hospitaldamaged,
+  req.body.healthcentersdestroyed,   req.body.healthcentersdamaged, req.body.healthpostsdestroyed,    req.body.healthpostsdamaged,    req.body.religiousbuildingsdestroyed,  
+  req.body.religiousbuildingsdamaged,req.body.publicbuildingdestroyed,    req.body.publicbuildingdamage,    req.body.costdamageslocal,    req.body.costdamagesdolar,
+req.body.hectarescropsdamaged,    req.body.hectarescropsdestroyed,    req.body.heardsofcattle,    req.body.damagedroads, req.body.destroyed,  
+req.body.affectedroads,    req.body.bridgesdestroyed,    req.body.bridgesdamaged,req.body.watersourcesaffected,    req.body.wellsdestroyed  
+ ];
 /*const values = [
 moment(new Date()), req.body.rid, req.body.uid,    req.body.killed,    req.body.killedmen,
     req.body.killedwomen,    req.body.killedchildren,    req.body.killedelder,    req.body.missing, req.body.missingmen, 
