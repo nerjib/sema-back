@@ -312,10 +312,15 @@ const updateDraft = `INSERT INTO
     longitude,    glidenumber,    affected,    affectedfamilies,    affectedmen, 
     affectedwomen,     affectedchildren,    affectedelder,    victim,    victimfamilies, 
     victimsmen,    victimswomen,    victimschildren,    victimselder,    transferred, 
-    transferredfamilies,    transferredmen,    transferredwomen,    transferredchildren,    transferredelder
-      )
+    transferredfamilies,    transferredmen,    transferredwomen,    transferredchildren,    transferredelder,
+    evacuated,    evacuatedfamilies,    evacuatedmen,    evacuatedwomen,    evacuatedchildren, 
+    evacuatedelder,    housesdestroyed,    housesdestroyedbrick,    housesdestroyedwood,    housesdamaged, 
+       housesdamagedbrick,    housesdamagedwood,    schoolsdestroyed,    schoolsdestroyedclass,    schoolsdestroyedstudents,
+ schoolsdamaged,    schoolsdamagedclass,    schoolsdamagedstudents,    hospitaldestroyed,    hospitaldamaged
+       )
   VALUES ($1, $2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,
-    $21,$22,$23,$24,$25,$26,$27,$28,$29,$30,$31,$32,$33,$34,$35,$36,$37,$38,$39,$40)RETURNING *`;
+    $21,$22,$23,$24,$25,$26,$27,$28,$29,$30,$31,$32,$33,$34,$35,$36,$37,$38,$39,$40,
+    $41,$42,$43,$44,$45,$46,$47,$48,$49,$50,$51,$52,$53,$54,$55,$56,$57,$58,$59,$60)RETURNING *`;
   const values = [
     moment(new Date()), req.body.rid, req.body.uid, req.body.killed,   req.body.killedmen,
     req.body.killedwomen,    req.body.killedchildren,    req.body.killedelder,    req.body.missing, req.body.missingmen,
@@ -324,7 +329,11 @@ const updateDraft = `INSERT INTO
    req.body.longitude,   req.body.glidenumber,    req.body.affected, req.body.affectedfamilies,    req.body.affectedmen,  
    req.body.affectedwomen,   req.body.affectedchildren, req.body.affectedelder,    req.body.victim,    req.body.victimfamilies, 
     req.body.victimsmen,   req.body.victimswomen, req.body.victimschildren,    req.body.victimselder,    req.body.transferred, 
-    req.body.transferredfamilies,   req.body.transferredmen,    req.body.transferredwomen,    req.body.transferredchildren,    req.body.transferredelder
+    req.body.transferredfamilies,   req.body.transferredmen,    req.body.transferredwomen,    req.body.transferredchildren,    req.body.transferredelder,
+    req.body.evacuated,    req.body.evacuatedfamilies,    req.body.evacuatedmen,    req.body.evacuatedwomen, req.body.evacuatedchildren, 
+    req.body.evacuatedelder,    req.body.housesdestroyed,    req.body.housesdestroyedbrick, req.body.housesdestroyedwood,        req.body.housesdamaged,   
+    req.body.housesdamagedbrick,    req.body.housesdamagedwood, req.body.schoolsdestroyed,    req.body.schoolsdestroyedclass,    req.body.schoolsdestroyedstudents,
+  req.body.schoolsdamaged,    req.body.schoolsdamagedclass,    req.body.schoolsdamagedstudents, req.body.hospitaldestroyed,    req.body.hospitaldamaged
    ];
 /*const values = [
 moment(new Date()), req.body.rid, req.body.uid,    req.body.killed,    req.body.killedmen,
