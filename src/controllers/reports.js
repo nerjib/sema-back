@@ -308,9 +308,9 @@ const updateDraft = `INSERT INTO
   followup (time, rid,    uid, killed,    killedmen,  
     killedwomen,    killedchildren,    killedelder,    missing,    missingmen
     )
-  VALUES ($1, $2,$3,$4,$5,$6,$7,$8,$9,$10)RETURNING *`;
+  VALUES ($1, $2,$3,$4,$5,$6,$7,$8,$9,$10,$11)RETURNING *`;
   const values = [
-    moment(new Date()), req.body.rid, req.body.uid, req.body.killed,    req.body.killedmen,    req.body.killedwomen, 
+    moment(new Date()), req.body.rid, req.body.uid, req.body.killed,   req.body.killedmen,    req.body.killedwomen, 
     req.body.killedchildren,    req.body.killedelder,    req.body.missing, req.body.missingmen,    req.body.missingwomen
      ];
 /*const values = [
