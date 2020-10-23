@@ -339,11 +339,6 @@ const { rows } = await db.query(updateDraft, values);
 // console.log(rows);
 const data = {
   status: 'success',
-  data: {
-    message: 'Reports Sent successfully​',
-    Name: rows[0].incidence,
-    Email: rows[0].comment,
-  },
 };
 return res.status(201).send(data);
 } catch (error) {
