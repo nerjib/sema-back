@@ -310,22 +310,24 @@ const updateDraft = `INSERT INTO
     )
   VALUES ($1, $2,$3,$4,$5,$6,$7,$8,$9,$10)RETURNING *`;
   const values = [
-    moment(new Date()), req.body.rid, req.body.uid   ];
+    moment(new Date()), req.body.rid, req.body.uid, req.body.killed,    req.body.killedmen,    req.body.killedwomen, 
+    req.body.killedchildren,    req.body.killedelder,    req.body.missing, req.body.missingmen,    req.body.missingwomen
+     ];
 /*const values = [
-moment(new Date()), req.body.rid, req.body.uid,    req.body.killed,    req.body.killedmen,    req.body.killedwomen, 
-   req.body.killedchildren,    req.body.killedelder,    req.body.missing, req.body.missingmen,    req.body.missingwomen,
-   req.body.missingchildren,    req.body.missingelder,    req.body.injured,    req.body.injuredmen,req.body.injuredwomen, 
-   req.body.injuredchildren,    req.body.injuredelder,    req.body.magnitude,req.body.latitude,    req.body.longitude,
-   req.body.glidenumber,    req.body.affected, req.body.affectedfamilies,    req.body.affectedmen,    req.body.affectedwomen,
-   req.body.affectedchildren, req.body.affectedelder,    req.body.victim,    req.body.victimfamilies,    req.body.victimsmen,
-   req.body.victimswomen, req.body.victimschildren,    req.body.victimselder,    req.body.transferred,    req.body.transferredfamilies,
-   req.body.transferredmen,    req.body.transferredwomen,    req.body.transferredchildren,    req.body.transferredelder,req.body.evacuated,
-    req.body.evacuatedfamilies,    req.body.evacuatedmen,    req.body.evacuatedwomen, req.body.evacuatedchildren,    req.body.evacuatedelder,
-    req.body.housesdestroyed,    req.body.housesdestroyedbrick, req.body.housesdestroyedwood,    req.body.housesdamaged,    req.body.housesdamagedbrick,
-    req.body.housesdamagedwood, req.body.schoolsdestroyed,    req.body.schoolsdestroyedclass,    req.body.schoolsdestroyedstudents, req.body.schoolsdamaged,  
-  req.body.schoolsdamagedclass,    req.body.schoolsdamagedstudents, req.body.hospitaldestroyed,    req.body.hospitaldamaged,    req.body.healthcentersdestroyed, 
-  req.body.healthcentersdamaged, req.body.healthpostsdestroyed,    req.body.healthpostsdamaged,    req.body.religiousbuildingsdestroyed,    req.body.religiousbuildingsdamaged,
-req.body.publicbuildingdestroyed,    req.body.publicbuildingdamage,    req.body.costdamageslocal,    req.body.costdamagesdolar,
+moment(new Date()), req.body.rid, req.body.uid,    req.body.killed,    req.body.killedmen,
+    req.body.killedwomen,    req.body.killedchildren,    req.body.killedelder,    req.body.missing, req.body.missingmen, 
+      req.body.missingwomen,   req.body.missingchildren,    req.body.missingelder,    req.body.injured,    req.body.injuredmen,
+   req.body.injuredwomen,    req.body.injuredchildren,    req.body.injuredelder,    req.body.magnitude,req.body.latitude,    
+   req.body.longitude,   req.body.glidenumber,    req.body.affected, req.body.affectedfamilies,    req.body.affectedmen,  
+     req.body.affectedwomen,   req.body.affectedchildren, req.body.affectedelder,    req.body.victim,    req.body.victimfamilies, 
+      req.body.victimsmen,   req.body.victimswomen, req.body.victimschildren,    req.body.victimselder,    req.body.transferred, 
+      req.body.transferredfamilies,   req.body.transferredmen,    req.body.transferredwomen,    req.body.transferredchildren,    req.body.transferredelder,
+   req.body.evacuated,    req.body.evacuatedfamilies,    req.body.evacuatedmen,    req.body.evacuatedwomen, req.body.evacuatedchildren, 
+       req.body.evacuatedelder,    req.body.housesdestroyed,    req.body.housesdestroyedbrick, req.body.housesdestroyedwood,        req.body.housesdamaged,   
+       req.body.housesdamagedbrick,    req.body.housesdamagedwood, req.body.schoolsdestroyed,    req.body.schoolsdestroyedclass,    req.body.schoolsdestroyedstudents,
+     req.body.schoolsdamaged,    req.body.schoolsdamagedclass,    req.body.schoolsdamagedstudents, req.body.hospitaldestroyed,    req.body.hospitaldamaged,
+      req.body.healthcentersdestroyed,   req.body.healthcentersdamaged, req.body.healthpostsdestroyed,    req.body.healthpostsdamaged,    req.body.religiousbuildingsdestroyed,  
+    req.body.religiousbuildingsdamaged,req.body.publicbuildingdestroyed,    req.body.publicbuildingdamage,    req.body.costdamageslocal,    req.body.costdamagesdolar,
 req.body.hectarescropsdamaged,    req.body.hectarescropsdestroyed,    req.body.heardsofcattle,    req.body.damagedroads, req.body.destroyed,  
   req.body.affectedroads,    req.body.bridgesdestroyed,    req.body.bridgesdamaged,req.body.watersourcesaffected,    req.body.wellsdestroyed,  
   req.body.wellsdamaged,    req.body.otherdamages,req.body.transport,    req.body.communication,    req.body.relief,
