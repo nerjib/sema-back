@@ -95,7 +95,7 @@ router.get('/reportfeedback/:id', async (req, res) => {
 
 //get all draft reports
 router.get('/getdraft', async (req, res) => {
-  const getAllQ = 'SELECT draftreports.id,draftreports.category,draftreports.event,draftreports.lga,draftreports.ward,draftreports.place,users.first_name,users.last_name,users.type FROM draftreports left join users on draftreports.sid=users.id';
+  const getAllQ = 'SELECT draftreports.id,draftreports.category,draftreports.event,draftreports.lga,draftreports.ward,draftreports.time,draftreports.place,users.first_name,users.last_name,users.type FROM draftreports left join users on draftreports.sid=users.id';
   try {
     // const { rows } = qr.query(getAllQ);
     const { rows } = await db.query(getAllQ);
