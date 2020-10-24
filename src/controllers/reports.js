@@ -131,10 +131,10 @@ router.get('/followup', async (req, res) => {
 });
 
 router.get('/followup/:id', async (req, res) => {
-  const getAllQ = 'SELECT * FROM followup left join draftreports on draftreports.id=followup.rid where draftreports.vid=$1 or draftreports.oid=$2';
+  const getAllQ = 'SELECT * FROM followup where rid=$1';
   try {
     // const { rows } = qr.query(getAllQ);
-    const { rows } = await db.query(getAllQ,[req.params.id,req.params.id]);
+    const { rows } = await db.query(getAllQ,[req.params.id]);
     return res.status(201).send(rows);
   } catch (error) {
   
