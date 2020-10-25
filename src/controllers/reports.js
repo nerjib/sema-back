@@ -157,6 +157,17 @@ router.get('/followup/:id', async (req, res) => {
   }
 });
 
+router.get('/getfollowup/:id', async (req, res) => {
+  const getAllQ = 'SELECT * FROM followup where id=$1';
+  try {
+    // const { rows } = qr.query(getAllQ);
+    const { rows } = await db.query(getAllQ,[req.params.id]);
+    return res.status(201).send(rows);
+  } catch (error) {
+  
+    return res.status(400).send(`${error} jsh`);
+  }
+});
 
 
 //insert reports
