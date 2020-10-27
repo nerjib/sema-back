@@ -68,7 +68,7 @@ router.get('/', async (req, res) => {
 
 const getFireZoneA = async () => {
   const getflood = `select count (*) from  draftreports where event=$1 and (lga=$2 or lga=$3 or lga=$4 or lga=$5
-    or lga=$6 or lga=$7 or lga=$8`
+    or lga=$6 or lga=$7 or lga=$8)`
   try {
     // const { rows } = qr.query(getAllQ);
     const { rows } = await db.query(getflood,['Fire','Kaduna South','Kaduna North','Igabi', 'Chikun','Giwa','Birnin Gwari','Kajuru']);
@@ -85,7 +85,7 @@ const getFireZoneA = async () => {
 
 const getFireZoneB = async () => {
   const getflood = `select count (*) from  draftreports where event=$1 and (lga=$2 or lga=$3 or lga=$4 or lga=$5
-    or lga=$6 or lga=$7 or lga=$8 or lga=$9`
+    or lga=$6 or lga=$7 or lga=$8 or lga=$9)`
   try {
     // const { rows } = qr.query(getAllQ);
     const { rows } = await db.query(getflood,['Fire','Zaria','Sabon Gari','Makarfi', 'Kudan','Ikara','Kubau','Soba','Lere']);
@@ -101,7 +101,7 @@ const getFireZoneB = async () => {
 }
 const getFireZoneC = async () => {
   const getflood = `select count (*) from  draftreports where event=$1 and (lga=$2 or lga=$3 or lga=$4 or lga=$5
-    or lga=$6 or lga=$7 or lga=$8 or lga=$9`
+    or lga=$6 or lga=$7 or lga=$8 or lga=$9)`
   try {
     // const { rows } = qr.query(getAllQ);
     const { rows } = await db.query(getflood,['Fire','Jemaa','Kauru','Kagarko', 'Kaura','Jaba','Sanga','Kachia','Zagon Kataf']);
