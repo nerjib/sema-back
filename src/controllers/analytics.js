@@ -118,14 +118,14 @@ const getFireZoneC = async () => {
 
 router.get('/zonalfire', async (req, res) => {
   const zoneAfire = await getFireZoneA()
-  const ZoneBFire = await getFireZoneB()
-  const ZoneCFire = await getFireZoneC()
+  const zoneBFire = await getFireZoneB()
+  const zoneCFire = await getFireZoneC()
 
   
      res.status(201).json({
          zoneAFire: zoneAfire[0].count,
-          ZoneBFire: ZoneBFire[0].count,
-          ZoneCFire: ZoneCFire[0].count
+          zoneBFire: zoneBFire[0].count,
+          zoneCFire: zoneCFire[0].count
        
      })
 
@@ -184,14 +184,14 @@ const getFloodZoneC = async () => {
 
 router.get('/zonalFlood', async (req, res) => {
   const zoneAFlood = await getFloodZoneA()
-  const ZoneBFlood = await getFloodZoneB()
-  const ZoneCFlood = await getFloodZoneC()
+  const zoneBFlood = await getFloodZoneB()
+  const zoneCFlood = await getFloodZoneC()
 
   
      res.status(201).json({
          zoneAFlood: zoneAFlood[0].count,
-          ZoneBFlood: ZoneBFlood[0].count,
-          ZoneCFlood: ZoneCFlood[0].count
+          zoneBFlood: zoneBFlood[0].count,
+          zoneCFlood: zoneCFlood[0].count
        
      })
 
@@ -250,14 +250,14 @@ const getAccidentZoneC = async () => {
 
 router.get('/zonalAccident', async (req, res) => {
   const zoneAAccident = await getAccidentZoneA()
-  const ZoneBAccident = await getAccidentZoneB()
-  const ZoneCAccident = await getAccidentZoneC()
+  const zoneBAccident = await getAccidentZoneB()
+  const zoneCAccident = await getAccidentZoneC()
 
   
      res.status(201).json({
          zoneAAccident: zoneAAccident[0].count,
-          ZoneBAccident: ZoneBAccident[0].count,
-          ZoneCAccident: ZoneCAccident[0].count
+          zoneBAccident: zoneBAccident[0].count,
+          zoneCAccident: zoneCAccident[0].count
        
      })
 
