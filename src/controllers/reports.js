@@ -351,16 +351,14 @@ return res.status(400).send(error);
 });
 
 router.put('/updatecategory', async (req, res) => {
-  let date =''
-  if (req.body.closeddate){
-    date = moment(new Date())
-  }
+ //   date = moment(new Date())
+  
   
   const updateaid = `UPDATE draftreports set category=$1,closeddate=$2  where id=$3 RETURNING *`;
 
 const values = [
   req.body.category,
-  date,
+  req.body.date,
 req.body.rid,
 ];
 try {
