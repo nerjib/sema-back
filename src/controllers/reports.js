@@ -358,7 +358,7 @@ router.put('/updatecategory', async (req, res) => {
 
 const values = [
   req.body.category,
-  req.body.date,
+  moment(new Date()),
 req.body.rid,
 ];
 try {
