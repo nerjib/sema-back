@@ -351,11 +351,17 @@ return res.status(400).send(error);
 });
 
 router.put('/updatecategory', async (req, res) => {
-  const updateaid = `UPDATE draftreports set category=$1 where id=$2 RETURNING *`;
+  let date =''
+  if (req.body.closeddate){
+    date = moment(new Date())
+  }
+  
+  const updateaid = `UPDATE draftreports set category=$1,closeddate=$2  where id=$3 RETURNING *`;
 
 const values = [
   req.body.category,
-req.body.rid
+  date,
+req.body.rid,
 ];
 try {
 const { rows } = await db.query(updateaid, values);
