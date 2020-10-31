@@ -359,7 +359,7 @@ router.put('/updatecategory', async (req, res) => {
 const values = [
   req.body.category,
   moment(new Date()),
-req.body.rid,
+  req.body.rid,
 ];
 try {
 const { rows } = await db.query(updateaid, values);
