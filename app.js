@@ -92,7 +92,10 @@ const post_data = querystring.stringify(data);
 
 const options = {
   url: 'https://exp.host/--/api/v2/push/send',
-  method: 'POST'
+  method: 'POST',
+  headers : {
+		'Content-Type': 'application/json'
+	}
 };
 
 const request = http.request(options, (response) => {
