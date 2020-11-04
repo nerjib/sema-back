@@ -13,6 +13,7 @@ const Users = require('./src/controllers/users')
 const Reports = require('./src/controllers/reports')
 const Analytics = require('./src/controllers/analytics')
 //var request = require('request');
+//const querystring = require('querystring');
 
 
 
@@ -74,7 +75,7 @@ app.get('/', function(req,res){
 res.send('Welcome to sema')
 })
 
-/*app.get('/push', function(req,res){
+app.get('/push', function(req,res){
   var options = {
     url: 'https://exp.host/--/api/v2/push/send',
     method: 'POST',
@@ -91,7 +92,7 @@ let data={
 request(options, data);
 res.send('ok')
 
-})*/
+})
 app.use('/api/v1/users', Users);
 app.use('/api/v1/reports', Reports);
 app.use('/api/v1/analytics', Analytics);
