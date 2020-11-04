@@ -97,5 +97,30 @@ return res.status(201).send(data);
 return res.status(400).send(error);
 }
 });
+
+
+//insert push token
+router.put('/pushtoken/:id', async (req, res) => {
+  const createUser = `UPDATE users pushtoken=$1 where id=$2 RETURNING *`;
+
+const values = [
+req.body.pushtoken,
+req.params.id
+];
+try {
+const { rows } = await db.query(createUser, values);
+// console.log(rows);
+const data = {
+  status: 'success',
+  data: {
+    message: 'Token added successfully',
+   
+  },
+};
+return res.status(201).send(data);
+} catch (error) {
+return res.status(400).send(error);
+}
+});
 module.exports = router;
 
