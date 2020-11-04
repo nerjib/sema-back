@@ -75,7 +75,7 @@ res.send('Welcome to sema')
 })
 
 app.get('/push', function(req,res){
-/*  var options = {
+  var options = {
     url: 'https://exp.host/--/api/v2/push/send',
     method: 'POST',
 };
@@ -88,14 +88,25 @@ let data={
 "data": { "data": "goes here" }
 }
 
-request(options, data);*/
+//request(options, data);
 
-request("https://www.google.com", function(error, response, body) {
-   if (!error && response.statusCode == 200) {
-     // writing the response to a file named data.html
-     fs.writeFileSync("data.html", body);
-   }
- });
+request({
+  uri: "https://exp.host/--/api/v2/push/send",
+  method: "POST",
+  json: {
+    "to": "ExponentPushToken[g4ESOZBNo1O65dnhet3Bbu]",
+    "sound": "default",
+    "title": "Original Title ok",
+    "body": "And here is the body gone!",
+    action: "create",
+    fieldType: {
+      name: "n$name",
+      valueType: { primitive: "STRING" },
+      scope: "versioned",
+      namespaces: { "my.demo": "n" }
+    }
+  }
+});
 
 res.send('ok')
 
