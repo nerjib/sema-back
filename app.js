@@ -94,7 +94,7 @@ const options = {
   url: 'https://exp.host/--/api/v2/push/send',
   method: 'POST',
   headers : {
-		'Content-Type': 'application/json'
+		'Content-Type': 'application/x-www-form-urlencoded'
 	}
 };
 
