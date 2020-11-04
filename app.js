@@ -99,7 +99,7 @@ const request = http.request(options, (response) => {
 	// response from server
 });
 
-request.write(post_data);
+request.write(data);
 request.end();
 
 res.send('ok')
