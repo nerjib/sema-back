@@ -75,7 +75,7 @@ res.send('Welcome to sema')
 })
 
 app.get('/push', function(req,res){
-  var options = {
+/*  var options = {
     url: 'https://exp.host/--/api/v2/push/send',
     method: 'POST',
 };
@@ -88,7 +88,15 @@ let data={
 "data": { "data": "goes here" }
 }
 
-request(options, data);
+request(options, data);*/
+
+request("https://www.google.com", function(error, response, body) {
+   if (!error && response.statusCode == 200) {
+     // writing the response to a file named data.html
+     fs.writeFileSync("data.html", body);
+   }
+ });
+
 res.send('ok')
 
 })
