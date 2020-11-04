@@ -12,8 +12,7 @@ const Chart = require('./src/controllers/chats/chats')
 const Users = require('./src/controllers/users')
 const Reports = require('./src/controllers/reports')
 const Analytics = require('./src/controllers/analytics')
-//var request = require('request');
-const querystring = require('querystring');
+var request = require('request');
 
 
 
@@ -76,35 +75,20 @@ res.send('Welcome to sema')
 })
 
 app.get('/push', function(req,res){
-  
+  var options = {
+    url: 'https://exp.host/--/api/v2/push/send',
+    method: 'POST',
+};
 
 let data={
   "to": "ExponentPushToken[g4ESOZBNo1O65dnhet3Bbu]",
 "sound": "default",
-"title": "Original Title ok back",
+"title": "Original Title ok",
 "body": "And here is the body gone!",
 "data": { "data": "goes here" }
 }
 
-
-// POST parameters as query string
-const post_data = querystring.stringify(data);
-
-const options = {
-  url: 'https://exp.host/--/api/v2/push/send',
-  method: 'POST',
-  headers : {
-		'Content-Type': 'application/x-www-form-urlencoded'
-	}
-};
-
-const request = http.request(options, (response) => {
-	// response from server
-});
-
-request.write(post_data);
-request.end();
-
+request(options, data);
 res.send('ok')
 
 })
