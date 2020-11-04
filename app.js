@@ -12,7 +12,7 @@ const Chart = require('./src/controllers/chats/chats')
 const Users = require('./src/controllers/users')
 const Reports = require('./src/controllers/reports')
 const Analytics = require('./src/controllers/analytics')
-
+var request = require('request');
 
 
 
@@ -72,6 +72,25 @@ app.use((req, res, next) => {
   
 app.get('/', function(req,res){
 res.send('Welcome to sema')
+})
+
+app.get('/push', function(req,res){
+  var options = {
+    url: 'https://api.particle.io/v1/devices/f1234f1234/myTogglePin',
+    method: 'POST',
+};
+
+let data={
+  "to": "ExponentPushToken[g4ESOZBNo1O65dnhet3Bbu]",
+"sound": "default",
+"title": "Original Title ok",
+"body": "And here is the body gone!",
+"data": { "data": "goes here" }
+}
+
+request(options, data);
+
+
 })
 app.use('/api/v1/users', Users);
 app.use('/api/v1/reports', Reports);
