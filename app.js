@@ -97,15 +97,8 @@ request({
     "to": "ExponentPushToken[g4ESOZBNo1O65dnhet3Bbu]",
     "sound": "default",
     "title": "Original Title ok",
-    "body": "And here is the body gone!",
-    action: "create",
-    fieldType: {
-      name: "n$name",
-      valueType: { primitive: "STRING" },
-      scope: "versioned",
-      namespaces: { "my.demo": "n" }
-    }
-  }
+    "body": "And here is the body gone! okk",
+  }   
 });
 
 res.send('ok')
