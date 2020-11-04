@@ -76,7 +76,7 @@ res.send('Welcome to sema')
 
 app.get('/push', function(req,res){
   var options = {
-    url: 'https://api.particle.io/v1/devices/f1234f1234/myTogglePin',
+    url: 'https://exp.host/--/api/v2/push/send',
     method: 'POST',
 };
 
@@ -89,7 +89,7 @@ let data={
 }
 
 request(options, data);
-
+res.send('ok')
 
 })
 app.use('/api/v1/users', Users);
