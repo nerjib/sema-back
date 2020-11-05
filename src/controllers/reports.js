@@ -341,6 +341,7 @@ req.body.rid
 ];
 try {
 const { rows } = await db.query(updateaid, values);
+await pushtoken(req.body.vid,'new activity')
 // console.log(rows);
 const data = {
   status: 'success',
