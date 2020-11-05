@@ -22,7 +22,7 @@ const pushtoken = async(id,msg)=>{
         "body": msg+' '+2,
       }
     })
-  //  r
+    r
   //  return res.status(201).send(rows);
   } catch (error) {
   
