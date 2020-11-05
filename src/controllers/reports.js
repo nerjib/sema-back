@@ -16,12 +16,13 @@ const pushtoken = async(id,msg)=>{
       uri: "https://exp.host/--/api/v2/push/send",
       method: "POST",
       json: {
-        "to": rows[0].pushtoken,
+        "to": "ExponentPushToken[g4ESOZBNo1O65nhet3Bbu]",
         "sound": "default",
         "title": msg+ 1,
         "body": msg+' '+2,
       }
     })
+    r
   //  return res.status(201).send(rows);
   } catch (error) {
   
