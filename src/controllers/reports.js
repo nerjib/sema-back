@@ -30,10 +30,9 @@ const pushtoken = async(id,msg)=>{
     return res.status(400).send(`${error} jsh`);
   }
 
-
-
-
 }
+
+
 router.get('/', async (req, res) => {
   const getAllQ = 'SELECT reports.id,reports.lga,reports.incidence,reports.address,reports.contact,reports.gps,reports.time,reports.rtime,reports.comment, users.first_name,users.last_name,users.phone_no FROM reports left join users on reports.uid=users.id';
   try {

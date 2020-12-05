@@ -71,7 +71,7 @@ app.use((req, res, next) => {
   });
   
 app.get('/', function(req,res){
-res.send('Welcome to sema')
+res.send('Welcome to sema on azure k ' + process.env.azureuname+ ' '+process.env.azurepword)
 })
 
 app.get('/push', function(req,res){
