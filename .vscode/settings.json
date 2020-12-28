@@ -1,0 +1,8 @@
+{
+    "appService.zipIgnorePattern": [
+        "node_modules{,/**}",
+        ".vscode{,/**}"
+    ],
+    "appService.defaultWebAppToDeploy": "/subscriptions/a89d91ea-f939-42bb-a1c8-48a666d54ae0/resourceGroups/appsvc_linux_centralus/providers/Microsoft.Web/sites/semaback",
+    "appService.deploySubpath": "."
+}

@@ -1,8 +1,37 @@
 const express = require('express');
 const moment = require('moment')
+const request = require('request');
 
 const router = express.Router();
 const db = require('../dbs/index');
+
+
+const pushtoken = async(id,msg)=>{
+  
+  const getAllQ = 'SELECT * from users where id=$1 ';
+  try {
+    // const { rows } = qr.query(getAllQ);
+    const { rows } = await db.query(getAllQ,[id]);
+    await request({
+      uri: "https://exp.host/--/api/v2/push/send",
+      method: "POST",
+      json: {
+      //  "to": "ExponentPushToken[g4ESOZBNo1O65nhet3Bbu]",
+      "to": rows[0].pushtoken,
+        "sound": "default",
+        "title": msg+ 1,
+        "body": msg+' '+2,
+      }
+    })
+    
+  //  return res.status(201).send(rows);
+  } catch (error) {
+  
+    return res.status(400).send(`${error} jsh`);
+  }
+
+}
+
 
 router.get('/', async (req, res) => {
   const getAllQ = 'SELECT reports.id,reports.lga,reports.incidence,reports.address,reports.contact,reports.gps,reports.time,reports.rtime,reports.comment, users.first_name,users.last_name,users.phone_no FROM reports left join users on reports.uid=users.id';
@@ -276,6 +305,7 @@ return res.status(400).send(error);
 }
 });
 
+
 router.put('/aid', async (req, res) => {
   const updateaid = `UPDATE reports set aid=$1, aidtime=$2 where id=$3 RETURNING *`;
 
@@ -286,6 +316,7 @@ req.body.rid
 ];
 try {
 const { rows } = await db.query(updateaid, values);
+await pushtoken(req.body.aid, 'just added')
 // console.log(rows);
 const data = {
   status: 'success',
@@ -311,6 +342,7 @@ req.body.rid
 ];
 try {
 const { rows } = await db.query(updateaid, values);
+await pushtoken(req.body.vid,'new activity')
 // console.log(rows);
 const data = {
   status: 'success',
