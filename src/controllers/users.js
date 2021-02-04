@@ -19,19 +19,6 @@ router.get('/', async (req, res) => {
   }
 });
 
-router.get('/tt', async (req,res)=>{
-  const getAllQ = 'SELECT * FROM users';
-  try {
-    // const { rows } = qr.query(getAllQ);
-    const { rows } = await db.query(getAllQ);
-    return res.status(201).send(rows);
-  } catch (error) {
-    if (error.routine === '_bt_check_unique') {
-      return res.status(400).send({ message: 'User with that EMAIL already exist' });
-    }
-    return res.status(400).send(`${error} jsh`);
-  }
-  })
 
 
 router.get('/azure', async (req, res) => {
